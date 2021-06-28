@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    # jasypt 加密後的密碼
+    password: ENC(ogz7LyfwOWuSwwxF+9ySRQ==)
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+jasypt:
+  encryptor:
+    # 密鑰，在 production 環境要刪除，改用環境變數
+    password: test1234
+    # 3.0.0 以上版本要加上以下兩段設定
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              BasicBinder: trace
